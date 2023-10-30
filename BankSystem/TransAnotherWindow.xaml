@@ -1,0 +1,29 @@
+﻿<Window x:Class="BankSystem.TransAnotherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankSystem"
+        mc:Ignorable="d"
+        Title="TransAnotherWindow" Height="250" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="The transfer goes from Main to Main accounts!" VerticalAlignment="Top" Foreground="Red" FontSize="10" Grid.Row="0"/>
+        <TextBlock x:Name="tbOnAccount" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="On this Main account: " VerticalAlignment="Bottom" FontSize="12" Grid.Row="0"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="To:" VerticalAlignment="Top" FontSize="12" Grid.Row="1"/>
+        <ComboBox x:Name="cbClientTo" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="290" Grid.Row="1" DisplayMemberPath="Name"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Amount:" VerticalAlignment="Top" FontSize="12" Grid.Row="2"/>
+        <TextBox x:Name="tbAmontMoney" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="290" PreviewKeyDown="tbAmountMoney_KeyPressed" TextChanged="tbAmountMoney_TextChanged"/>
+        <TextBlock x:Name="tbCommisionWillBe" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="Commission will be: " VerticalAlignment="Bottom" FontSize="10" Grid.Row="2" Foreground="Red"/>
+
+        <Button x:Name="btnTransfer" Content="Transfer" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="3" VerticalAlignment="Center" Width="150" Click="btnTransfer_Click"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="150" Click="btnClose_Click"/>
+    </Grid>
+</Window>

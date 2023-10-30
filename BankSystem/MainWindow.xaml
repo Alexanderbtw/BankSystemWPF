@@ -1,0 +1,71 @@
+﻿<Window x:Class="BankSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankSystem"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Closed="Closed_SaveData">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Bank">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="317*"/>
+                        <RowDefinition Height="117*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView x:Name="lvClients" Grid.Column="0" SelectedItem="{Binding SelectedClient, Mode=TwoWay}" SelectionChanged="lvClients_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="100" Header="ID"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="200" Header="Name"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}" Width="100" Header="Status"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <ListView x:Name="lvAccounts" Grid.Column="1" d:ItemsSource="{Binding SelectedClient}" SelectionChanged="lvAccounts_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="100" Header="Name"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Money}" Width="150" Header="Money"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}" Width="150" Header="Cathegory"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <StackPanel Grid.Column="0" Grid.Row="1">
+                        <Button x:Name="btnAddClient" Content="Add Client" Click="btnAddClient_Click"/>
+                        <Button x:Name="btnDelClient" Content="Delete Client" Click="btnDelClient_Click" Visibility="Collapsed"/>
+                        <Button x:Name="btnSkipYear" Content="Skip Year" Click="btnSkipYear_Click"/>
+                        <Button x:Name="btnSkipMonth" Content="Skip Month" Click="btnSkipMonth_Click"/>
+                        <Button x:Name="btnTransAnother" Content="Transfer another client" Click="btnTransAnother_Click" Visibility="Collapsed"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <Button x:Name="btnAddAccount" Content="Add Account" Click="btnAddAccount_Click"/>
+                        <Button x:Name="btnDelAccount" Content="Delete Account" Click="btnDelAccount_Click" Visibility="Collapsed"/>
+                        <Button x:Name="btnTransBtwAcc" Content="Transfer between accounts" Click="btnTransBtwAcc_Click"/>
+                        <Button x:Name="btnDeposit" Content="Deposit" Click="btnDeposit_Click" Visibility="Collapsed"/>
+                        <Button x:Name="btnWithdraw" Content="Withdraw" Click="btnWithdraw_Click" Visibility="Collapsed"/>
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Logs">
+                <Grid Background="Black">
+                    <ScrollViewer>
+                        <TextBlock x:Name="tbLogs" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Foreground="White"/>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
